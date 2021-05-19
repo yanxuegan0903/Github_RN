@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
+
 export default class FavoritePage extends React.Component {
 
   render() {
     return (
       <View style={styles.containar}>
-        <Text style={styles.text}>FavoritePage</Text>
+        <Text style={styles.text}>MyPage</Text>
       </View>
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   containar: {
