@@ -10,10 +10,12 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import DynamicNavigators from "../navigators/DynamicNavigators";
+import NavigatorUtils from "../navigators/NavigatorUtils";
 
 export default class HomePage extends React.Component {
 
   render() {
+    NavigatorUtils.navigation = this.props.navigation;
     return <DynamicNavigators/>;
   }
 }

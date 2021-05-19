@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { View, Text, StyleSheet, Button } from "react-native";
+import NavigatorUtils from "../navigators/NavigatorUtils";
 
 
 export default class FavoritePage extends React.Component {
@@ -18,6 +19,9 @@ export default class FavoritePage extends React.Component {
           })
 
         }/>
+        <Button title={'go detail'} onPress={()=>{
+          NavigatorUtils.goToPage({},'detailPage')
+      }}/>
       </View>
     );
   }

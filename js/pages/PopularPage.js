@@ -5,22 +5,40 @@ import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 
 
 export default class PopularPage extends React.Component {
+
+  constructor() {
+    super();
+    this.tabNames = ["Java", "Android", "iOS", "React", "PHP", "HTML5", "Vue"];
+  }
+
+  _genTabs() {
+    const tabs = {};
+    this.tabNames.forEach(
+      (item, index) => {
+        console.log(index + item);
+        tabs["tab" + index] = {
+          screen: props => <PopularTab {...props} tabLabel={item} />,
+          navigationOptions: {
+            title: item,
+          },
+        };
+      },
+    );
+
+    return tabs;
+
+  }
+
+
   topTabbar() {
     return (
       createAppContainer(
         createMaterialTopTabNavigator(
+          this._genTabs(),
           {
-            tab1: {
-              screen: PopularTab,
-              navigationOptions: {
-                tabBarLabel: "Tab1",
-              },
-            },
-            tab2: {
-              screen: PopularTab,
-              navigationOptions: {
-                tabBarLabel: "Tab2",
-              },
+            tabBarOptions: {
+              scrollEnabled: true,
+              upperCaseLabel: false,
             },
           },
         ),
@@ -54,7 +72,7 @@ class PopularTab extends React.Component {
 const styles = StyleSheet.create({
   containar: {
     flex: 1,
-    marginTop:30
+    marginTop: 30,
   },
   tabContainar: {
     flex: 1,
