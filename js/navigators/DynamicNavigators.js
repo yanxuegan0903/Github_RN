@@ -8,8 +8,7 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import MyPage from "../pages/MyPage";
 import { createAppContainer } from "react-navigation";
 import { BottomTabBar, createBottomTabNavigator } from "react-navigation-tabs";
-import { LogBox } from "react-native";
-
+import {connect} from "react-redux";
 
 const TABS = {
   popularPage: {
@@ -67,16 +66,21 @@ const TABS = {
 };
 
 
-export default class DynamicNavigators extends React.Component{
+class DynamicNavigators extends React.Component{
   constructor() {
     super();
   }
 
   _tabnavigator(){
+    if (this.tabs){
+      return this.tabs;
+    }
     const {popularPage,trendingPage,favoritePage,myPage} = TABS;
     const dynamicTabs = {popularPage,trendingPage,favoritePage,myPage};
-    return createAppContainer(createBottomTabNavigator(dynamicTabs,{
-      tabBarComponent:TabBarComponet
+    return this.tabs = createAppContainer(createBottomTabNavigator(dynamicTabs,{
+      tabBarComponent:props=>{
+        return <TabBarComponet theme = {this.props.theme} {...props}/>
+      }
     }));
   }
 
@@ -98,19 +102,16 @@ class TabBarComponet extends React.Component{
   }
 
   render() {
-    const {routes,index} = this.props.navigation.state;
-    // 这是获取当前页面的params
-    if (routes[index].params){
-      // 去除当前页面的params
-      const {theme} = routes[index].params;
-      if (theme && theme.updateTime > this.theme.updateTime) {
-        this.theme = theme;
-      }
-    }
-
     return <BottomTabBar
       {...this.props}
-      activeTintColor={this.theme.tintColor || this.props.activeTintColor}
+      activeTintColor={this.props.theme}
     />
   }
 }
+
+
+const mapStateToProps = state =>({
+  theme:state.theme.theme
+})
+
+export default connect(mapStateToProps)(DynamicNavigators)

@@ -4,6 +4,8 @@ import { createStackNavigator } from "react-navigation-stack";
 import HomePage from "../pages/HomePage";
 import WelcomePage from "../pages/WelcomePage";
 import DetailsPage from "../pages/DetailsPage";
+import FetchDemo from "../pages/FetchDemo";
+import AsyncStorageDemo from "../pages/AsyncStorageDemo";
 
 const InitNavi = createStackNavigator({
   welcomePage: {
@@ -21,10 +23,12 @@ const MainNavi = createStackNavigator({
       header: null,
     },
   },
-  detailPage:DetailsPage
+  detailPage:DetailsPage,
+  fetchDemo:FetchDemo,
+  AsyncStorageDemo:AsyncStorageDemo
 });
 
-export const SwitchNavi = createSwitchNavigator({
+const SwitchNavi = createSwitchNavigator({
   initNavi: {
     screen: InitNavi,
     navigationOptions: {
@@ -36,6 +40,8 @@ export const SwitchNavi = createSwitchNavigator({
     navigationOptions: {
       header: null,
     },
-  },
+  }
 });
 
+
+export const AppNavigator = createAppContainer(SwitchNavi)
