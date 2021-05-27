@@ -30,7 +30,9 @@ export default class DataStoreDemo extends React.Component {
           </View>
           <View>
             <Text style={styles.text}>操作结果</Text>
-            <Text>{this.state.result}</Text>
+            <ScrollView style={{margin:15}}>
+              <Text>{this.state.result}</Text>
+            </ScrollView>
           </View>
         </View>
       </View>
