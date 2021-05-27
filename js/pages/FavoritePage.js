@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { View, Text, StyleSheet, Button } from "react-native";
 import NavigatorUtils from "../navigators/NavigatorUtils";
 import AsyncStorageDemo from "./AsyncStorageDemo";
+import DataStoreDemo from "./DataStoreDemo";
 
 
 export default class FavoritePage extends React.Component {
@@ -28,6 +29,9 @@ export default class FavoritePage extends React.Component {
         }}/>
         <Button title={'go AsyncStorageDemo'} onPress={()=>{
           NavigatorUtils.goToPage({},'AsyncStorageDemo')
+        }}/>
+        <Button title={'go DataStoreDemo'} onPress={()=>{
+          NavigatorUtils.goToPage({},'DataStoreDemo')
         }}/>
 
       </View>

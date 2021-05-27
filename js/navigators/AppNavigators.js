@@ -6,6 +6,7 @@ import WelcomePage from "../pages/WelcomePage";
 import DetailsPage from "../pages/DetailsPage";
 import FetchDemo from "../pages/FetchDemo";
 import AsyncStorageDemo from "../pages/AsyncStorageDemo";
+import DataStoreDemo from "../pages/DataStoreDemo";
 
 const InitNavi = createStackNavigator({
   welcomePage: {
@@ -25,7 +26,8 @@ const MainNavi = createStackNavigator({
   },
   detailPage:DetailsPage,
   fetchDemo:FetchDemo,
-  AsyncStorageDemo:AsyncStorageDemo
+  AsyncStorageDemo:AsyncStorageDemo,
+  DataStoreDemo:DataStoreDemo
 });
 
 const SwitchNavi = createSwitchNavigator({
